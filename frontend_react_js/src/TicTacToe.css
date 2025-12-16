@@ -1,0 +1,200 @@
+:root {
+  --ocean-primary: #2563EB;
+  --ocean-secondary: #F59E0B;
+  --ocean-success: #F59E0B;
+  --ocean-error: #EF4444;
+  --ocean-background: #f9fafb;
+  --ocean-surface: #ffffff;
+  --ocean-text: #111827;
+  --ocean-gradient: linear-gradient(120deg, #2563eb11 0%, #f9fafb 100%);
+  --ttt-shadow: 0 6px 20px 0 rgba(37,99,235,0.11), 0 1.5px 4px 0 #cbd6ee;
+  --ttt-radius: 16px;
+  --ttt-transition: box-shadow 0.2s, background 0.2s, color 0.2s, border 0.2s;
+}
+
+.ttt-container {
+  background: var(--ocean-gradient);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 32px;
+}
+
+.ttt-title {
+  margin-bottom: 4px;
+  font-size: 2.2rem;
+  color: var(--ocean-primary);
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.ttt-status {
+  margin-bottom: 18px;
+  font-size: 1.25rem;
+  color: var(--ocean-text);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: var(--ocean-surface);
+  border-radius: var(--ttt-radius);
+  box-shadow: var(--ttt-shadow);
+  padding: 12px 24px;
+  min-width: 180px;
+}
+
+/* Board styles */
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  background: var(--ocean-surface);
+  border-radius: var(--ttt-radius);
+  box-shadow: var(--ttt-shadow);
+  padding: 18px;
+  margin-bottom: 22px;
+  transition: box-shadow 0.25s;
+}
+
+.ttt-board-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+}
+
+.ttt-square {
+  width: 70px;
+  height: 70px;
+  background: var(--ocean-background);
+  border: 2.5px solid #dae6fa;
+  border-radius: 12px;
+  margin: 7px;
+  box-shadow: 0 1.5px 6px #d1daef54;
+  font-size: 2.32rem;
+  font-weight: 700;
+  color: var(--ocean-text);
+  outline: none;
+  cursor: pointer;
+  transition: 
+    transform 0.13s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.22s,
+    background 0.18s,
+    color 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+}
+
+.ttt-square:focus {
+  border-color: var(--ocean-primary);
+  box-shadow: 0 0 0 2.5px #2563eb29;
+}
+.ttt-square:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.ttt-square[disabled] {
+  background: #e6effa;
+  cursor: not-allowed;
+  color: #b1bacb;
+  transition: background 0.2s;
+}
+
+.ttt-square.ttt-winning {
+  background: linear-gradient(120deg, #fef9c3 20%, #F59E0B22 100%);
+  border-color: var(--ocean-secondary);
+  color: var(--ocean-secondary);
+  box-shadow: 0 2px 10px 0 var(--ocean-secondary), 0 1.5px 7px #ffe27f44;
+  animation: ttt-win-pop 0.5s ease;
+}
+@keyframes ttt-win-pop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.16); }
+  60%  { transform: scale(0.93); }
+  100% { transform: scale(1); }
+}
+
+/* Status text highlights */
+.ttt-x {
+  font-weight: bold;
+  color: var(--ocean-primary);
+  text-shadow: 0 1px 3px #2563eb2e;
+  letter-spacing: 1.1px;
+}
+.ttt-o {
+  font-weight: bold;
+  color: var(--ocean-success);
+  text-shadow: 0 1px 3px #f59e0b46;
+  letter-spacing: 1.1px;
+}
+.ttt-winner-text {
+  font-weight: 700;
+  color: var(--ocean-secondary);
+  font-size: 1.4em;
+  letter-spacing: 1.7px;
+  text-shadow: 0 2.5px 8px #ffe27f60;
+}
+.ttt-draw-text {
+  font-weight: 700;
+  color: var(--ocean-error);
+  font-size: 1.3em;
+  letter-spacing: 1.6px;
+}
+
+/* Restart Button */
+.ttt-restart-btn {
+  margin-top: 15px;
+  padding: 14px 34px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #2563EB 80%, #F59E0B 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--ttt-radius);
+  box-shadow: 0 1.5px 8px #c0d6fa66;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.11s;
+}
+.ttt-restart-btn:hover {
+  background: linear-gradient(90deg, #3385ff 70%, #fbbf24 100%);
+  box-shadow: 0 3px 16px #c0d6fa90;
+  transform: translateY(-2.5px) scale(1.04);
+  opacity: 0.98;
+}
+.ttt-restart-btn:active {
+  opacity: 0.87;
+  transform: translateY(0.5px) scale(0.97);
+}
+
+/* Footer styles */
+.ttt-footer {
+  margin-top: 36px;
+  color: #94a3b8;
+  font-size: 0.94em;
+  opacity: 0.6;
+}
+.ttt-footer-link {
+  color: var(--ocean-primary);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.ttt-footer-link:hover {
+  color: #1749b2;
+}
+
+/* Responsive grid + adapt sizing */
+@media (max-width: 700px) {
+  .ttt-board { padding: 12px;}
+  .ttt-square { width: 48px; height: 48px; font-size: 1.12rem; margin: 4px; }
+  .ttt-title { font-size: 1.34rem;}
+  .ttt-status { font-size: 1.03rem; padding: 7px 10px; min-width: 90px;}
+  .ttt-restart-btn { padding: 10px 16px; font-size: .93rem;}
+}
+
+/* Misc accessibility/support */
+.ttt-square:focus-visible {
+  outline: 2.5px solid var(--ocean-primary);
+}
